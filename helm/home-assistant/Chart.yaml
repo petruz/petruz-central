@@ -1,0 +1,19 @@
+apiVersion: v2
+appVersion: 2024.12.2
+description: Helm environment for Home Assistant
+home: https://github.com/petruz/petruz-central
+icon: https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Home_Assistant_Logo.svg/519px-Home_Assistant_Logo.svg.png
+keywords:
+- home-assistant
+- hass
+- homeassistant
+maintainers:
+- email: info@petruz.it
+  name: Luca Petruzziello
+name: home-assistant-env
+sources:
+- https://github.com/petruz/home-assistant-helm-chart
+- https://github.com/cdr/code-server
+- https://github.com/petruz/home-assistant-helm-chart/tree/main/charts/home-assistant
+type: application
+version: 0.1.0
