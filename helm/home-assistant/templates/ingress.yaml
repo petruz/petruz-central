@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: zigbee2mqtt-switches
+  namespace: home-automation
+  annotations:
+    external-dns.home.arpa/enabled: 'true'
+    ingress.kubernetes.io/force-ssl-redirect: 'true'
+    ingress.kubernetes.io/proxy-body-size: 1024m
+    nginx.ingress.kubernetes.io/auth-response-headers: x-auth-request-user, x-auth-request-email
+    nginx.ingress.kubernetes.io/auth-signin: https://oauth2-proxy.petruz-central.it/oauth2/start
+    nginx.ingress.kubernetes.io/auth-url: https://oauth2-proxy.petruz-central.it/oauth2/auth
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - z2m-switches.petruz-central.it
+  rules:
+    - host: z2m-switches.petruz-central.it
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: zigbee2mqtt-switches
+                port:
+                  number: 8099
